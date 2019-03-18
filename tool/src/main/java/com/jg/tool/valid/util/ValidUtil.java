@@ -55,8 +55,14 @@ public class ValidUtil {
         if (field.isAnnotationPresent(Min.class)) {
             validMin(object, field);
         }
+        if (field.isAnnotationPresent(MoreThan.class)) {
+            validMoreThan(object, field);
+        }
         if (field.isAnnotationPresent(Max.class)) {
             validMax(object, field);
+        }
+        if (field.isAnnotationPresent(LessThan.class)) {
+            validLessThan(object, field);
         }
         if (field.isAnnotationPresent(Size.class)) {
             validSize(object, field);
@@ -127,6 +133,28 @@ public class ValidUtil {
     }
 
     /**
+     * 校验数字小于
+     * @param object    校验对象
+     * @param field 校验字段
+     */
+    private static void validLessThan(Object object, Field field) {
+        LessThan annotation =  field.getAnnotation(LessThan.class);
+        Object result = getResult(object, field);
+        Double value = Convert.toDouble(result);
+        double max = annotation.value();
+        if (value == null || value >= max) {
+            String minStr = max + "";
+            if (minStr.endsWith(".0")) {
+                minStr = StrUtil.sub(minStr, 0, -2);
+            }
+            String message = annotation.message()
+                    .replace("{fieldName}", field.getName())
+                    .replace("{max}", minStr);
+            throw new ValidationException(message);
+        }
+    }
+
+    /**
      * 校验数字大等于
      * @param object    校验对象
      * @param field 校验字段
@@ -137,6 +165,28 @@ public class ValidUtil {
         Double value = Convert.toDouble(result);
         double min = annotation.value();
         if (value == null || value < min) {
+            String minStr = min + "";
+            if (minStr.endsWith(".0")) {
+                minStr = StrUtil.sub(minStr, 0, -2);
+            }
+            String message = annotation.message()
+                    .replace("{fieldName}", field.getName())
+                    .replace("{min}", minStr);
+            throw new ValidationException(message);
+        }
+    }
+
+    /**
+     * 校验数字大于
+     * @param object    校验对象
+     * @param field 校验字段
+     */
+    private static void validMoreThan(Object object, Field field) {
+        MoreThan annotation =  field.getAnnotation(MoreThan.class);
+        Object result = getResult(object, field);
+        Double value = Convert.toDouble(result);
+        double min = annotation.value();
+        if (value == null || value <= min) {
             String minStr = min + "";
             if (minStr.endsWith(".0")) {
                 minStr = StrUtil.sub(minStr, 0, -2);

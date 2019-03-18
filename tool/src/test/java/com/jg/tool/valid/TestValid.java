@@ -138,6 +138,47 @@ public class TestValid extends TestImpl{
     }
 
     @Test
+    public void testMoreThanWhenTest1IsNull() {
+        TestValidMoreThan testValidMoreThan = new TestValidMoreThan();
+        expectedException.expect(ValidationException.class);
+        expectedException.expectMessage("test1参数必须大于10！");
+        ValidUtil.valid(testValidMoreThan);
+    }
+
+    @Test
+    public void testMoreThanWhenTest1IsNotNum() {
+        TestValidMoreThan testValidMoreThan = new TestValidMoreThan();
+        testValidMoreThan.setTest1("123df");
+        expectedException.expect(ValidationException.class);
+        expectedException.expectMessage("test1参数必须大于10！");
+        ValidUtil.valid(testValidMoreThan);
+    }
+
+    @Test
+    public void testMoreThanWhenTest1IsNum() {
+        TestValidMoreThan testValidMoreThan = new TestValidMoreThan();
+        testValidMoreThan.setTest2(22);
+        testValidMoreThan.setTest1("123");
+        ValidUtil.valid(testValidMoreThan);
+        testValidMoreThan.setTest1("1");
+        expectedException.expect(ValidationException.class);
+        expectedException.expectMessage("test1参数必须大于10！");
+        ValidUtil.valid(testValidMoreThan);
+    }
+
+    @Test
+    public void testMoreThanWhenTest2() {
+        TestValidMoreThan testValidMoreThan = new TestValidMoreThan();
+        testValidMoreThan.setTest2(22);
+        testValidMoreThan.setTest1("123");
+        ValidUtil.valid(testValidMoreThan);
+        testValidMoreThan.setTest2(1);
+        expectedException.expect(ValidationException.class);
+        expectedException.expectMessage("测试2必须大于20");
+        ValidUtil.valid(testValidMoreThan);
+    }
+
+    @Test
     public void testMaxWhenTest1IsNull() {
         TestValidMax testValidMax = new TestValidMax();
         expectedException.expect(ValidationException.class);
@@ -176,6 +217,47 @@ public class TestValid extends TestImpl{
         expectedException.expect(ValidationException.class);
         expectedException.expectMessage("测试2必须小于20");
         ValidUtil.valid(testValidMax);
+    }
+
+    @Test
+    public void testLessThanWhenTest1IsNull() {
+        TestValidLessThan testValidLessThan = new TestValidLessThan();
+        expectedException.expect(ValidationException.class);
+        expectedException.expectMessage("test1参数必须小于10！");
+        ValidUtil.valid(testValidLessThan);
+    }
+
+    @Test
+    public void testLessThanWhenTest1IsNotNum() {
+        TestValidLessThan testValidLessThan = new TestValidLessThan();
+        testValidLessThan.setTest1("123df");
+        expectedException.expect(ValidationException.class);
+        expectedException.expectMessage("test1参数必须小于10！");
+        ValidUtil.valid(testValidLessThan);
+    }
+
+    @Test
+    public void testLessThanWhenTest1IsNum() {
+        TestValidLessThan testValidLessThan = new TestValidLessThan();
+        testValidLessThan.setTest2(1);
+        testValidLessThan.setTest1("9");
+        ValidUtil.valid(testValidLessThan);
+        testValidLessThan.setTest1("123");
+        expectedException.expect(ValidationException.class);
+        expectedException.expectMessage("test1参数必须小于10！");
+        ValidUtil.valid(testValidLessThan);
+    }
+
+    @Test
+    public void testLessThanWhenTest2() {
+        TestValidLessThan testValidLessThan = new TestValidLessThan();
+        testValidLessThan.setTest2(1);
+        testValidLessThan.setTest1("1");
+        ValidUtil.valid(testValidLessThan);
+        testValidLessThan.setTest2(123);
+        expectedException.expect(ValidationException.class);
+        expectedException.expectMessage("测试2必须小于20");
+        ValidUtil.valid(testValidLessThan);
     }
 
     @Test
