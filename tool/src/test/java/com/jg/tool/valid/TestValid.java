@@ -454,4 +454,35 @@ public class TestValid extends TestImpl{
         testValidNotEmpty.setTest4(map);
         testValidNotEmpty.valid();
     }
+
+    @Test
+    public void testFl() {
+        TestFl testFl = new TestFl();
+        expectedException.expectMessage("test不能为空！");
+        testFl.valid();
+    }
+
+    @Test
+    public void testZl() {
+        TestZl testZl = new TestZl();
+        testZl.setTest1("12312312");
+        expectedException.expectMessage("test不能为空！");
+        testZl.valid();
+    }
+
+    @Test
+    public void testZl12() {
+        TestZl2 testZl2 = new TestZl2();
+        testZl2.setTest("12312312");
+        testZl2.setTest2("1231231232");
+        expectedException.expectMessage("test1不能为空！");
+        testZl2.valid();
+    }
+
+    @Test
+    public void testZl2() {
+        TestZl2 testZl2 = new TestZl2();
+        expectedException.expectMessage("test2不能为空！");
+        testZl2.valid();
+    }
 }

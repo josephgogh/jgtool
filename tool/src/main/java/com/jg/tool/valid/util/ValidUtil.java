@@ -8,6 +8,8 @@ import com.jg.tool.valid.annotation.Number;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -25,10 +27,24 @@ public class ValidUtil {
      * @param object 校验对象
      */
     public static void valid(Object object) {
-        Field[] fields = object.getClass().getDeclaredFields( );
-        for (Field field : fields) {
+        for (Field field : getAllFields(object)) {
             validField(object, field);
         }
+    }
+
+    /**
+     * 获取所有字段
+     * @param object    对象
+     * @return  字段集合
+     */
+    private static List<Field> getAllFields(Object object) {
+        List<Field> result = new ArrayList<>();
+        Class cls = object.getClass();
+        while (cls != null) {
+            result.addAll(Arrays.asList(cls.getDeclaredFields()));
+            cls = cls.getSuperclass();
+        }
+        return result;
     }
 
     /**
