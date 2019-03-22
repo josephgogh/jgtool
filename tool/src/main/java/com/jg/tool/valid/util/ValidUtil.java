@@ -86,6 +86,80 @@ public class ValidUtil {
         if (field.isAnnotationPresent(Pattern.class)) {
             validPattern(object, field);
         }
+        if (field.isAnnotationPresent(NumIn.class)) {
+            validNumIn(object, field);
+        }
+        if (field.isAnnotationPresent(StrIn.class)) {
+            validStrIn(object, field);
+        }
+    }
+
+    /**
+     * 校验数值是否在规定中
+     * @param object    校验对象
+     * @param field 校验字段
+     */
+    private static void validStrIn(Object object, Field field) {
+        StrIn annotation = field.getAnnotation(StrIn.class);
+        String[] value = annotation.value();
+        Object result = getResult(object, field);
+        if (result != null) {
+            String sResult = Convert.toStr(result);
+            for (String s : value) {
+                if (sResult.equals(s)) {
+                    return ;
+                }
+            }
+        }
+        StringBuilder valueMsg = new StringBuilder("{");
+        for (String s : value) {
+            if (valueMsg.toString().equals("{")) {
+                valueMsg.append(s);
+            } else {
+                valueMsg.append(",").append(s);
+            }
+        }
+        valueMsg.append("}");
+        String message = annotation.message()
+                .replace("{fieldName}", field.getName())
+                .replace("{value}", valueMsg.toString());
+        throw new ValidationException(message);
+    }
+
+    /**
+     * 校验数值是否在规定中
+     * @param object    校验对象
+     * @param field 校验字段
+     */
+    private static void validNumIn(Object object, Field field) {
+        NumIn annotation = field.getAnnotation(NumIn.class);
+        double[] value = annotation.value();
+        Object result = getResult(object, field);
+        if (result != null) {
+            double dResult = Convert.toDouble(result);
+            for (double v : value) {
+                if (dResult == v) {
+                    return  ;
+                }
+            }
+        }
+        StringBuilder valueMsg = new StringBuilder("{");
+        for (double v : value) {
+            String vs = v+"";
+            if (vs.endsWith(".0")) {
+                vs = StrUtil.sub(vs, 0, -2);
+            }
+            if (valueMsg.toString().equals("{")) {
+                valueMsg.append(vs);
+            } else {
+                valueMsg.append(",").append(vs);
+            }
+        }
+        valueMsg.append("}");
+        String message = annotation.message()
+                .replace("{fieldName}", field.getName())
+                .replace("{value}", valueMsg.toString());
+        throw new ValidationException(message);
     }
 
     /**
