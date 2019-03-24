@@ -398,4 +398,29 @@ public class ValidUtil {
         return result;
     }
 
+    /**
+     * 校验参数不能为null
+     * @param obj   校验对象
+     * @param errorMsg  错误信息
+     */
+    public static void notNull(Object obj, String errorMsg) {
+        if (obj == null) {
+            throw new ValidationException(errorMsg);
+        }
+    }
+
+    /**
+     * 校验参数不能为空
+     * @param obj   校验对象
+     * @param errorMsg  错误信息
+     */
+    public static void notEmpty(Object obj, String errorMsg) {
+        if (obj == null) {
+            throw new ValidationException(errorMsg);
+        }
+        String strObj = StrUtil.toString(obj);
+        if (StrUtil.isEmpty(strObj)) {
+            throw new ValidationException(errorMsg);
+        }
+    }
 }
