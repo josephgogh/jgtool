@@ -410,6 +410,17 @@ public class ValidUtil {
     }
 
     /**
+     * 校验参数必须为null
+     * @param obj   校验对象
+     * @param errorMsg  错误信息
+     */
+    public static void isNull(Object obj, String errorMsg) {
+        if (obj != null) {
+            throw new ValidationException(errorMsg);
+        }
+    }
+
+    /**
      * 校验参数不能为空
      * @param obj   校验对象
      * @param errorMsg  错误信息
@@ -420,6 +431,21 @@ public class ValidUtil {
         }
         String strObj = StrUtil.toString(obj);
         if (StrUtil.isEmpty(strObj)) {
+            throw new ValidationException(errorMsg);
+        }
+    }
+
+    /**
+     * 校验参数必须为空
+     * @param obj   校验对象
+     * @param errorMsg  错误信息
+     */
+    public static void isEmpty(Object obj, String errorMsg) {
+        if (obj == null) {
+            return ;
+        }
+        String strObj = StrUtil.toString(obj);
+        if (StrUtil.isNotEmpty(strObj)) {
             throw new ValidationException(errorMsg);
         }
     }
