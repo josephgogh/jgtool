@@ -11,4 +11,10 @@ public class TestValidPattern extends TestImpl {
         testPattern.valid();
     }
 
+    @Test
+    public void test1() {
+        TestPattern1 testPattern = new TestPattern1();
+        testPattern.valid();
+    }
+
 }

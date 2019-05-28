@@ -222,6 +222,10 @@ public class ValidUtil {
         if (result == null && ignoreNull) {  //忽略校验
             return;
         }
+        boolean ignoreEmpty = annotation.ignoreEmpty();
+        if (isEmpty(result) && ignoreEmpty) {  //忽略校验
+            return;
+        }
         if (result == null || !java.util.regex.Pattern.matches(regexp, result.toString())) {
             String message = annotation.message()
                     .replace("{fieldName}", field.getName())
@@ -242,6 +246,10 @@ public class ValidUtil {
         Object result = getResult(object, field);
         boolean ignoreNull = annotation.ignoreNull();
         if (result == null && ignoreNull) {  //忽略校验
+            return;
+        }
+        boolean ignoreEmpty = annotation.ignoreEmpty();
+        if (isEmpty(result) && ignoreEmpty) {  //忽略校验
             return;
         }
         String resultStr = StrUtil.toString(result);

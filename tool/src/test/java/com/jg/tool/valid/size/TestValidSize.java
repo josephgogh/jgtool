@@ -11,4 +11,11 @@ public class TestValidSize extends TestImpl {
         testSize.valid();
     }
 
+    @Test
+    public void test1() {
+        TestSize1 testSize = new TestSize1();
+        testSize.setTest("");
+        testSize.valid();
+    }
+
 }
