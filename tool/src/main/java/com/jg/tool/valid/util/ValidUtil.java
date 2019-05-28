@@ -92,6 +92,45 @@ public class ValidUtil {
         if (field.isAnnotationPresent(StrIn.class)) {
             validStrIn(object, field);
         }
+        if (field.isAnnotationPresent(IsPhoneNum.class)) {
+            validIsPhoneNum(object, field);
+        }
+    }
+
+    /**
+     * 校验数值是否为电话号码
+     * @param object    校验对象
+     * @param field 校验字段
+     */
+    private static void validIsPhoneNum(Object object, Field field) {
+        IsPhoneNum annotation = field.getAnnotation(IsPhoneNum.class);
+        boolean ignoreEmpty = annotation.ignoreEmpty();
+        Object result = getResult(object, field);
+        String sResult = Convert.toStr(result);
+        if (StrUtil.isEmpty(sResult) && ignoreEmpty) {
+            return ;
+        }
+        if (StrUtil.isNotEmpty(sResult)) {
+            if (isPhoneNum(sResult)) {
+                return ;
+            }
+        }
+        String message = annotation.message()
+                .replace("{fieldName}", field.getName());
+        throw new ValidationException(message);
+    }
+
+    /**
+     * 是否为电话号码
+     * @param phone 电话
+     * @return  true： 是； false： 否
+     */
+    private static boolean isPhoneNum(String phone){
+        java.util.regex.Pattern p1;
+        java.util.regex.Pattern p2;
+        p1 = java.util.regex.Pattern.compile("^(((13[0-9])|(15[0-9])|(18[0-9])|(17[0-9]))+\\d{8})?$");
+        p2 = java.util.regex.Pattern.compile("^(0[0-9]{2,3}\\-)?([1-9][0-9]{6,7})$");
+        return ((phone.length() == 11 && p1.matcher(phone).matches())||(phone.length()<16&&p2.matcher(phone).matches()));
     }
 
     /**
@@ -335,6 +374,11 @@ public class ValidUtil {
         }
     }
 
+    /**
+     * 判断对象是否为空
+     * @param result    操作对象
+     * @return  true ： 是； false： 否
+     */
     private static boolean isEmpty(Object result) {
         if (result == null) {
             return true;
@@ -398,6 +442,8 @@ public class ValidUtil {
         return result;
     }
 
+    //////////////////////////////// TODO 常规校验
+
     /**
      * 校验参数不能为null
      * @param obj   校验对象
@@ -446,6 +492,17 @@ public class ValidUtil {
         }
         String strObj = StrUtil.toString(obj);
         if (StrUtil.isNotEmpty(strObj)) {
+            throw new ValidationException(errorMsg);
+        }
+    }
+
+    /**
+     * 校验参数必须为电话号码
+     * @param phoneNum   校验对象
+     * @param errorMsg  错误信息
+     */
+    public static void isPhoneNum(String phoneNum, String errorMsg) {
+        if (StrUtil.isEmpty(phoneNum) || !isPhoneNum(phoneNum)) {
             throw new ValidationException(errorMsg);
         }
     }

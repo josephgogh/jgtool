@@ -1,37 +1,171 @@
-# jgtool
+# valid(对象校验模块)
+## java bean校验模块
+校验方式：  
+1. ValidUtil.valid(object);
+2. java bean对象继承类AbstractValid  
+    调用object.valid()方法实现校验;
+    
+#### @Empty
+1. 使用方式  
+   @Empty(message="错误信息")  
+   private String test;
+2. 参数说明  
+    message： 异常信息
+3. 校验说明：字段为null或者字段为空字符串
 
-#### 介绍
-个人开发简单工具
+#### @NotEmpty
+1. 使用方式  
+   @NotEmpty(message="错误信息")  
+   private String test;
+2. 参数说明  
+    message： 异常信息
+3. 校验说明：字段不为null并且字段不为空字符串
 
-#### 软件架构
-软件架构说明
+#### @Null
+1. 使用方式  
+   @Null(message="错误信息")  
+   private String test;
+2. 参数说明  
+    message： 异常信息
+3. 校验说明：字段必须为null
 
+#### @NotNull
+1. 使用方式  
+   @NotNull(message="错误信息")  
+   private String test;
+2. 参数说明  
+    message： 异常信息
+3. 校验说明：字段必须不为null
 
-#### 安装教程
+#### @Number
+1. 使用方式  
+   @Number(message="错误信息")  
+   private String test;
+2. 参数说明  
+    message： 异常信息
+3. 校验说明：字段必须为数值或者可转换为数值的字符串
 
-1. xxxx
-2. xxxx
-3. xxxx
+#### @IsPhoneNum
+1. 使用方式  
+   @IsPhoneNum(ignoreEmpty=true, message="错误信息")  
+   private String test;
+2. 参数说明
+    ignoreEmpty: 是否忽略校验空字符串或null(默认false)
+    message： 异常信息
+3. 校验说明：字段必须为电话号码格式
 
-#### 使用说明
+#### @LessThan
+1. 使用方式  
+   @LessThan(value=100, message="错误信息")  
+   private String test;
+2. 参数说明
+    value: double类型的数值
+    message： 异常信息
+3. 校验说明：字段值必须小于{value}
 
-1. xxxx
-2. xxxx
-3. xxxx
+#### @Max
+1. 使用方式  
+   @Max(value=100, message="错误信息")  
+   private String test;
+2. 参数说明
+    value: double类型的数值
+    message： 异常信息
+3. 校验说明：字段值必须小等于{value}
 
-#### 参与贡献
+#### @Min
+1. 使用方式  
+   @Min(value=0, message="错误信息")  
+   private String test;
+2. 参数说明
+    value: double类型的数值
+    message： 异常信息
+3. 校验说明：字段值必须大等于{value}
 
-1. Fork 本仓库
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
+#### @MoreThan
+1. 使用方式  
+   @MoreThan(value=0, message="错误信息")  
+   private String test;
+2. 参数说明
+    value: double类型的数值
+    message： 异常信息
+3. 校验说明：字段值必须大于{value}
 
+#### @NumIn
+1. 使用方式  
+   @NumIn(value={0, 1, 2}, message="错误信息")  
+   private String test;
+2. 参数说明
+    value: double数值数组
+    message： 异常信息
+3. 校验说明：字段数值必须为{value}中的其中一个
 
-#### 码云特技
+#### @StrIn
+1. 使用方式  
+   @NumIn(value={"1", "2", "3"}, message="错误信息")  
+   private String test;
+2. 参数说明
+    value: 字符串数组
+    message： 异常信息
+3. 校验说明：字段字符串必须为{value}中的其中一个
 
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+#### @Pattern
+1. 使用方式  
+   @Pattern(regexp = "^(.+)@(.+)$", message="错误信息")  
+   private String test;
+2. 参数说明
+    regexp: 正则表达式
+    message： 异常信息
+3. 校验说明：字段必须符合正则表达式{regexp}
+
+#### @Size
+1. 使用方式  
+   @Size(min=0, max=6, message="错误信息")  
+   private String test;
+2. 参数说明
+    min: 参数最小长度(默认0)
+    max: 参数最大长度(默认Integer.MAX_VALUE)
+    message： 异常信息
+3. 校验说明：参数长度必须在{min}-{max}之间
+
+## 常规字段校验模块
+校验方式：ValidUtil.method();直接调用方法
+
+#### notNull
+1. 使用方式    
+    ValidUtil.notNull(obj, errorMsg)
+2. 参数说明   
+    Object obj: 校验对象  
+    String errorMsg: 异常信息
+3. 校验说明：对象不能为null，为null则抛出异常
+
+#### isNull
+1. 使用方式    
+    ValidUtil.isNull(obj, errorMsg)
+2. 参数说明   
+    Object obj: 校验对象  
+    String errorMsg: 异常信息
+3. 校验说明：对象必须为null，不为null则抛出异常
+
+#### notEmpty
+1. 使用方式    
+    ValidUtil.notEmpty(obj, errorMsg)
+2. 参数说明   
+    Object obj: 校验对象  
+    String errorMsg: 异常信息
+3. 校验说明：对象不能为null并且不能为空字符串，为null或空字符串则抛出异常
+
+#### isEmpty
+1. 使用方式    
+    ValidUtil.isEmpty(obj, errorMsg)
+2. 参数说明   
+    Object obj: 校验对象  
+    String errorMsg: 异常信息
+3. 校验说明：对象必须为null或空字符串，不为null并且不为空字符串则抛出异常
+
+#### isPhoneNum
+1. 使用方式    
+    ValidUtil.isPhoneNum(phoneNum, errorMsg)
+2. 参数说明   
+    String phoneNum: 校验对象(电话号码)  
+    String errorMsg: 异常信息
+3. 校验说明：校验对象必须为电话号码格式，否则抛出异常

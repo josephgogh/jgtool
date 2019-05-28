@@ -1,6 +1,7 @@
 package com.jg.tool.valid.validUtil;
 
 import com.jg.tool.TestImpl;
+import com.jg.tool.valid.isphonenum.TestIsPhoneNum;
 import com.jg.tool.valid.util.ValidUtil;
 import org.junit.Test;
 
@@ -37,6 +38,26 @@ public class TestValidUtil extends TestImpl {
         String test = "123";
         expectedException.expectMessage("字符串必须为空！");
         ValidUtil.isEmpty(test, "字符串必须为空！");
+    }
+
+    @Test
+    public void testIsPhoneNum() {
+        String test = "";
+        expectedException.expectMessage("test1参数必须为电话号码！");
+        ValidUtil.isPhoneNum(test, "test1参数必须为电话号码！");
+    }
+
+    @Test
+    public void testIsPhoneNum1() {
+        String test = "123123";
+        expectedException.expectMessage("test1参数必须为电话号码！");
+        ValidUtil.isPhoneNum(test, "test1参数必须为电话号码！");
+    }
+
+    @Test
+    public void testIsPhoneNum2() {
+        String test = "18705090212";
+        ValidUtil.isPhoneNum(test, "test1参数必须为电话号码！");
     }
 
 }
