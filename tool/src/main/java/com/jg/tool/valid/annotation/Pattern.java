@@ -19,6 +19,12 @@ public @interface Pattern {
     String regexp();
 
     /**
+     * 当字段为null时，是否忽略校验
+     * 默认false：需要校验
+     */
+    boolean ignoreNull() default false;
+
+    /**
      * 异常信息
      */
     String message() default "{fieldName}参数不符合正则表达式规则{{regexp}}！";

@@ -19,6 +19,12 @@ public @interface Min {
     double value();
 
     /**
+     * 当字段为null时，是否忽略校验
+     * 默认false：需要校验
+     */
+    boolean ignoreNull() default false;
+
+    /**
      * 异常信息
      */
     String message() default "{fieldName}参数必须大等于{min}！";

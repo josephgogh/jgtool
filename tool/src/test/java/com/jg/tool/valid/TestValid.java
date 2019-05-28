@@ -65,16 +65,10 @@ public class TestValid extends TestImpl{
     }
 
     @Test
-    public void testNumberWhenNull() {
-        TestValidNumber testValidNumber = new TestValidNumber();
-        testValidNumber.setTest1(null);
-        ValidUtil.valid(testValidNumber);
-    }
-
-    @Test
     public void testNumberWhenTest1IsNum() {
         TestValidNumber testValidNumber = new TestValidNumber();
         testValidNumber.setTest1("123d");
+        testValidNumber.setTest2("123");
         ValidUtil.valid(testValidNumber);
     }
 
@@ -90,6 +84,7 @@ public class TestValid extends TestImpl{
     @Test
     public void testNumberWhenTest2IsNotNumAndCustomMessage() {
         TestValidNumber testValidNumber = new TestValidNumber();
+        testValidNumber.setTest1("123");
         testValidNumber.setTest2("123df");
         expectedException.expect(ValidationException.class);
         expectedException.expectMessage("测试2必须为数字类型！");

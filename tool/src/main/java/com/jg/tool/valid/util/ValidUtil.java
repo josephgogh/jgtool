@@ -142,6 +142,10 @@ public class ValidUtil {
         StrIn annotation = field.getAnnotation(StrIn.class);
         String[] value = annotation.value();
         Object result = getResult(object, field);
+        boolean ignoreNull = annotation.ignoreNull();
+        if (result == null && ignoreNull) {  //忽略校验
+            return;
+        }
         if (result != null) {
             String sResult = Convert.toStr(result);
             for (String s : value) {
@@ -174,6 +178,10 @@ public class ValidUtil {
         NumIn annotation = field.getAnnotation(NumIn.class);
         double[] value = annotation.value();
         Object result = getResult(object, field);
+        boolean ignoreNull = annotation.ignoreNull();
+        if (result == null && ignoreNull) {  //忽略校验
+            return;
+        }
         if (result != null) {
             double dResult = Convert.toDouble(result);
             for (double v : value) {
@@ -210,6 +218,10 @@ public class ValidUtil {
         Pattern annotation = field.getAnnotation(Pattern.class);
         String regexp = annotation.regexp();
         Object result = getResult(object, field);
+        boolean ignoreNull = annotation.ignoreNull();
+        if (result == null && ignoreNull) {  //忽略校验
+            return;
+        }
         if (result == null || !java.util.regex.Pattern.matches(regexp, result.toString())) {
             String message = annotation.message()
                     .replace("{fieldName}", field.getName())
@@ -228,6 +240,10 @@ public class ValidUtil {
         int min = annotation.min();
         int max = annotation.max();
         Object result = getResult(object, field);
+        boolean ignoreNull = annotation.ignoreNull();
+        if (result == null && ignoreNull) {  //忽略校验
+            return;
+        }
         String resultStr = StrUtil.toString(result);
         if ((result == null && min > 0) || resultStr.length() < min || resultStr.length() > max) {
             String message = annotation.message()
@@ -248,6 +264,10 @@ public class ValidUtil {
         Max annotation =  field.getAnnotation(Max.class);
         Object result = getResult(object, field);
         Double value = Convert.toDouble(result);
+        boolean ignoreNull = annotation.ignoreNull();
+        if (value == null && ignoreNull) {  //忽略校验
+            return;
+        }
         double max = annotation.value();
         if (value == null || value > max) {
             String minStr = max + "";
@@ -270,6 +290,10 @@ public class ValidUtil {
         LessThan annotation =  field.getAnnotation(LessThan.class);
         Object result = getResult(object, field);
         Double value = Convert.toDouble(result);
+        boolean ignoreNull = annotation.ignoreNull();
+        if (value == null && ignoreNull) {  //忽略校验
+            return;
+        }
         double max = annotation.value();
         if (value == null || value >= max) {
             String minStr = max + "";
@@ -292,6 +316,10 @@ public class ValidUtil {
         Min annotation =  field.getAnnotation(Min.class);
         Object result = getResult(object, field);
         Double value = Convert.toDouble(result);
+        boolean ignoreNull = annotation.ignoreNull();
+        if (value == null && ignoreNull) {  //忽略校验
+            return;
+        }
         double min = annotation.value();
         if (value == null || value < min) {
             String minStr = min + "";
@@ -314,6 +342,10 @@ public class ValidUtil {
         MoreThan annotation =  field.getAnnotation(MoreThan.class);
         Object result = getResult(object, field);
         Double value = Convert.toDouble(result);
+        boolean ignoreNull = annotation.ignoreNull();
+        if (value == null && ignoreNull) {  //忽略校验
+            return;
+        }
         double min = annotation.value();
         if (value == null || value <= min) {
             String minStr = min + "";
@@ -333,14 +365,15 @@ public class ValidUtil {
      * @param field 校验字段
      */
     private static void validNumber(Object object, Field field) {
-        Number numberAnnotation =  field.getAnnotation(Number.class);
+        Number annotation =  field.getAnnotation(Number.class);
         Object result = getResult(object, field);
-        if (result == null) {
-            return ;
+        boolean ignoreNull = annotation.ignoreNull();
+        if (result == null && ignoreNull) {  //忽略校验
+            return;
         }
         Double value = Convert.toDouble(result);
         if (value == null) {
-            String message = numberAnnotation.message()
+            String message = annotation.message()
                     .replace("{fieldName}", field.getName());
             throw new ValidationException(message);
         }
