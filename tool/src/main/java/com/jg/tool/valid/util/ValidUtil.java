@@ -8,10 +8,7 @@ import com.jg.tool.valid.annotation.Number;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 校验工具类
@@ -547,4 +544,65 @@ public class ValidUtil {
             throw new ValidationException(errorMsg);
         }
     }
+
+    /**
+     * 校验参数是否为空
+     * @param object    校验参数
+     * @return  返回结果
+     */
+    public static boolean isBlank(Object object) {
+        if (object == null) {
+            return true;
+        }
+        if (object instanceof String && ((String) object).length() <= 0) {
+            return true;
+        }
+        if (object instanceof Map && ((Map) object).size() <= 0) {
+            return true;
+        }
+        if (object instanceof Collection && ((Collection) object).size() <= 0) {
+            return true;
+        }
+        if (object.getClass().isArray()) {
+            if (object instanceof int[]) {
+                int[] ints = (int[]) object;
+                return ints.length <= 0;
+            } else if (object instanceof byte[]) {
+                byte[] bytes = (byte[]) object;
+                return bytes.length <= 0;
+            } else if (object instanceof short[]) {
+                short[] shorts = (short[]) object;
+                return shorts.length <= 0;
+            } else if (object instanceof long[]) {
+                long[] longs = (long[]) object;
+                return longs.length <= 0;
+            } else if (object instanceof float[]) {
+                float[] floats = (float[]) object;
+                return floats.length <= 0;
+            } else if (object instanceof double[]) {
+                double[] doubles = (double[]) object;
+                return doubles.length <= 0;
+            } else if (object instanceof char[]) {
+                char[] chars = (char[]) object;
+                return chars.length <= 0;
+            } else if (object instanceof boolean[]) {
+                boolean[] booleans = (boolean[]) object;
+                return booleans.length <= 0;
+            } else {
+                Object[] objects = (Object[]) object;
+                return objects.length <= 0;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 校验参数是否不为空
+     * @param object    校验参数
+     * @return  返回结果
+     */
+    public static boolean isNotBlank(Object object) {
+        return !isBlank(object);
+    }
+
 }
