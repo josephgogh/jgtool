@@ -597,12 +597,34 @@ public class ValidUtil {
     }
 
     /**
+     * 校验对象是否为空，不为空则抛出异常
+     * @param object    校验对象
+     * @param message   异常信息
+     */
+    public static void isBlank(Object object, String message) {
+        if (isNotBlank(object)) {
+            throw new ValidationException(message);
+        }
+    }
+
+    /**
      * 校验参数是否不为空
      * @param object    校验参数
      * @return  返回结果
      */
     public static boolean isNotBlank(Object object) {
         return !isBlank(object);
+    }
+
+    /**
+     * 校验对象是否不为空，为空则抛出异常
+     * @param object    校验对象
+     * @param message   异常信息
+     */
+    public static void isNotBlank(Object object, String message) {
+        if (isBlank(object)) {
+            throw new ValidationException(message);
+        }
     }
 
 }

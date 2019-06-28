@@ -183,6 +183,22 @@
 
 #### isBlank
 1. 使用方式    
+    ValidUtil.isBlank(object, errorMsg)
+2. 参数说明   
+    Object object: 校验对象    
+    String errorMsg: 异常信息  
+3. 校验说明：校验对象为空，否则抛出异常
+             
+#### isNotBlank
+1. 使用方式    
+    ValidUtil.isNotBlank(object, errorMsg)
+2. 参数说明   
+    Object object: 校验对象  
+    String errorMsg: 异常信息  
+3. 校验说明：校验对象不为空，否则抛出异常
+
+#### isBlank
+1. 使用方式    
     ValidUtil.isBlank(object)
 2. 参数说明   
     Object object: 校验对象    

@@ -202,4 +202,18 @@ public class TestBlankValid extends TestImpl {
         Assert.assertTrue(result);
     }
 
+    @Test
+    public void Test() {
+        Integer[] ints = new Integer[]{1, 2, 3};
+        expectedException.expectMessage("异常嘻嘻");
+        ValidUtil.isBlank(ints, "异常嘻嘻");
+    }
+
+    @Test
+    public void Test1() {
+        Integer[] ints = new Integer[]{};
+        expectedException.expectMessage("异常嘻嘻");
+        ValidUtil.isNotBlank(ints, "异常嘻嘻");
+    }
+
 }
