@@ -627,4 +627,26 @@ public class ValidUtil {
         }
     }
 
+    /**
+     * 校验参数是否为真，不为真则抛出异常
+     * @param b 校验对象
+     * @param message   异常信息
+     */
+    public static void isTrue(boolean b, String message) {
+        if (!b) {
+            throw new ValidationException(message);
+        }
+    }
+
+    /**
+     * 校验参数是否为假，为真则抛出异常
+     * @param b 校验对象
+     * @param message   异常信息
+     */
+    public static void isFalse(boolean b, String message) {
+        if (b) {
+            throw new ValidationException(message);
+        }
+    }
+
 }
