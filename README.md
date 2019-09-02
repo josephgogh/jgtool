@@ -1,3 +1,8 @@
+# emptyObject(空对象转换模块)
+1. EmptyObject.object(T obj, T defaultObj);
+2. EmptyObject.list(List<T> list);
+3. EmptyObject.map(Map<K, T> map);
+4. EmptyObject.set(Set<T> set);
 # valid(对象校验模块)
 ## java bean校验模块
 校验方式：  
@@ -216,3 +221,19 @@
              校验对象为String类型时，object="":false;  
              校验对象为集合或者数组类型时，object的长度<=0:false;  
               其他:true;
+              
+#### isTrue
+1. 使用方式    
+    ValidUtil.isTrue(object, errorMsg)
+2. 参数说明   
+    Boolean b: 校验对象  
+    String errorMsg: 异常信息  
+3. 校验说明：校验对象为true，否则抛出异常
+
+#### isFalse
+1. 使用方式    
+    ValidUtil.isFalse(object, errorMsg)
+2. 参数说明   
+    Boolean b: 校验对象  
+    String errorMsg: 异常信息  
+3. 校验说明：校验对象为false，否则抛出异常
