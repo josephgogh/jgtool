@@ -1,7 +1,6 @@
 package com.jg.tool.valid;
 
 import com.jg.tool.TestImpl;
-import com.jg.tool.valid.model.TestValidNumIn;
 import com.jg.tool.valid.model.TestValidStrIn;
 import com.jg.tool.valid.util.ValidUtil;
 import org.junit.Test;
