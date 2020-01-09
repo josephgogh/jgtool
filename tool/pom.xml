@@ -8,6 +8,17 @@
     <artifactId>tool</artifactId>
     <version>1.0.1</version>
 
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://repo.rdc.aliyun.com/repository/118308-release-Yc57qI/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://repo.rdc.aliyun.com/repository/118308-snapshot-EPI2mx/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <dependencies>
 
         <dependency>
