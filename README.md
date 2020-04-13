@@ -237,3 +237,23 @@
     Boolean b: 校验对象  
     String errorMsg: 异常信息  
 3. 校验说明：校验对象为false，否则抛出异常
+
+# actable模块（自动建表模块）
+自动建表模块，暂时支持mysql、oracle数据库
+## 使用方式
+```
+BasicDataSource basicDataSource = new BasicDataSource();
+basicDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+basicDataSource.setUrl("jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8");
+basicDataSource.setUsername("root");
+basicDataSource.setPassword("123456");
+ACTable acTable = new ACTable(basicDataSource, "com.jgtool.test.actable.po.mysql", AutoType.UPDATE);
+```
+## 参数说明
+1. DataSource：数据源  
+2. basePackage: 需要扫描的包  
+3. autoType:创建模式  
+3.1. create：会将配置的表删除，然后根据配置的结构重新建表  
+3.2. insert：不修改原有的表结构，当表中的字段不存在的时候，进行新增  
+3.3. update：修改原有的表结构，当表中的字段不存在的时候，进行新增，当表中的字段存在的时候但是字段类型不一致的时候，进行更新  
+3.4. none：不进行任何处理  
