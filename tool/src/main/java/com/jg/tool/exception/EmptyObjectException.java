@@ -3,7 +3,7 @@ package com.jg.tool.exception;
 /**
  * 空对象异常
  */
-public class EmptyObjectException extends RuntimeException {
+public class EmptyObjectException extends JGToolException {
 
     public EmptyObjectException() {
         super();

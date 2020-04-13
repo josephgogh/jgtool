@@ -3,7 +3,7 @@ package com.jg.tool.exception;
 /**
  * 字段校验异常
  */
-public class ValidationException extends RuntimeException {
+public class ValidationException extends JGToolException {
 
     public ValidationException() {
         super();
