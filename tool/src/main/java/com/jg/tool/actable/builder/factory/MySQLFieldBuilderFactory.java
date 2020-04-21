@@ -3,6 +3,8 @@ package com.jg.tool.actable.builder.factory;
 import com.jg.tool.actable.builder.mysql.*;
 import com.jg.tool.actable.constant.MySQLFieldType;
 
+import java.util.Date;
+
 /**
  * mysql字段构建器工厂
  */
@@ -48,6 +50,7 @@ public class MySQLFieldBuilderFactory extends FieldBuilderFactory {
         add(Double.class.getName(), new MySQLDoubleFieldBuilder());
         add(char.class.getName(), new MySQLCharFieldBuilder());
         add(String.class.getName(), new MySQLVarcharFieldBuilder());
+        add(Date.class.getName(), new MySQLDatetimeFieldBuilder());
     }
 
 }

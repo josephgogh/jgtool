@@ -88,16 +88,19 @@ public abstract class Executor {
         boolean isExistsTable = dbExecutor.checkTableIsExists(this.tableName);
         List<String> fieldInsertSqlList = new ArrayList<>();
         List<String> fieldUpdateSqlList = new ArrayList<>();
-        for (Field field : EmptyObject.list(this.fieldList)) {  //遍历字段
+        for (Field field : EmptyObject.list(this.fieldList)) {
+            //遍历字段
             Column column = field.getAnnotation(Column.class);
             FieldBuilder fieldBuilder = this.fieldBuilderFactory.getFieldBuilder(field, column);
             if (fieldBuilder == null) {
                 throw new ACTableException("暂不支持此数据类型的构建！类名：" + this.cls.getName() + ",字段名：" + field.getName());
             }
             String fieldName = ColumnUtil.getTableFieldName(field, column);
-            if (isExistsTable) {    //表存在的时候，校验字段是否存在
+            if (isExistsTable) {
+                //表存在的时候，校验字段是否存在
                 boolean isExistsTableField = dbExecutor.checkTableFieldIsExists(this.tableName, fieldName);
-                if (isExistsTableField) {   //存在字段的时候执行更新
+                if (isExistsTableField) {
+                    //存在字段的时候执行更新
                     FieldStructure fieldStructure = dbExecutor.getFieldStructure(this.tableName, fieldName);
                     String buildSql = fieldBuilder.buildModify(field, column, fieldStructure);
                     fieldUpdateSqlList.add(buildSql);
@@ -107,7 +110,8 @@ public abstract class Executor {
             String buildSql = fieldBuilder.build(field, column);
             fieldInsertSqlList.add(buildSql);
         }
-        if (isExistsTable) {    //存在表的时候，执行表新增字段和表更新字段
+        if (isExistsTable) {
+            //存在表的时候，执行表新增字段和表更新字段
             dbExecutor.addField(this.tableName, fieldInsertSqlList);
             dbExecutor.modifyField(this.tableName, fieldUpdateSqlList);
         } else {    //不存在表的时候，执行表创建

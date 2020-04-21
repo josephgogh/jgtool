@@ -3,6 +3,8 @@ package com.jg.tool.actable.builder.factory;
 import com.jg.tool.actable.builder.oracle.*;
 import com.jg.tool.actable.constant.OracleFieldType;
 
+import java.util.Date;
+
 /**
  * oracle字段构建器工厂
  */
@@ -42,6 +44,7 @@ public class OracleFieldBuilderFactory extends FieldBuilderFactory {
         add(Double.class.getName(), new OracleBinaryDoubleFieldBuilder());
         add(char.class.getName(), new OracleCharFieldBuilder());
         add(String.class.getName(), new OracleVarchar2FieldBuilder());
+        add(Date.class.getName(), new OracleDateFieldBuilder());
     }
 
 }
