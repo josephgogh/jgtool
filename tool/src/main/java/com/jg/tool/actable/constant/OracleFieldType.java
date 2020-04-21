@@ -2,6 +2,7 @@ package com.jg.tool.actable.constant;
 
 /**
  * oracle字段类型
+ * @author gaolj
  */
 public interface OracleFieldType {
 

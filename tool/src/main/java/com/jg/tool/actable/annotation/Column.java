@@ -2,6 +2,10 @@ package com.jg.tool.actable.annotation;
 
 import java.lang.annotation.*;
 
+/**
+ * 表示该字段需要自动创建
+ * @author gaolj
+ */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

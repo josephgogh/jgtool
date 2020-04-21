@@ -2,28 +2,28 @@ package com.jg.tool.actable.execute;
 
 import com.jg.tool.actable.ACTable;
 import com.jg.tool.actable.builder.factory.AbstractFieldBuilderFactory;
-import com.jg.tool.actable.builder.factory.OracleFieldBuilderFactory;
+import com.jg.tool.actable.builder.factory.MySqlFieldBuilderFactory;
 import com.jg.tool.actable.db.AbstractDbExecutor;
-import com.jg.tool.actable.db.OracleDbExecutor;
+import com.jg.tool.actable.db.MySqlDbExecutor;
 
 /**
- * oracle执行者
+ * mysql执行者
  * @author gaolj
  */
-public class OracleExecutor extends AbstractExecutor {
+public class MySqlExecutor extends AbstractExecutor {
 
-    public OracleExecutor(ACTable acTable) {
+    public MySqlExecutor(ACTable acTable) {
         super(acTable);
     }
 
     @Override
     protected AbstractFieldBuilderFactory buildFieldBuilderFactory() {
-        return new OracleFieldBuilderFactory();
+        return new MySqlFieldBuilderFactory();
     }
 
     @Override
     protected AbstractDbExecutor buildDbExecutor() {
-        return new OracleDbExecutor(acTable.getConnection());
+        return new MySqlDbExecutor(acTable.getConnection());
     }
 
 }

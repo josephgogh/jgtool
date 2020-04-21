@@ -8,8 +8,9 @@ import java.util.List;
 
 /**
  * oracle执行器
+ * @author gaolj
  */
-public class OracleDbExecutor extends DbExecutor {
+public class OracleDbExecutor extends AbstractDbExecutor {
     public OracleDbExecutor(Connection connection) {
         super(connection);
     }

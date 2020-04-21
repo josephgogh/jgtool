@@ -6,7 +6,7 @@ import cn.hutool.log.LogFactory;
 import com.jg.tool.actable.annotation.Table;
 import com.jg.tool.actable.constant.AutoType;
 import com.jg.tool.actable.enums.DbType;
-import com.jg.tool.actable.execute.Executor;
+import com.jg.tool.actable.execute.AbstractExecutor;
 import com.jg.tool.empty.EmptyObject;
 import com.jg.tool.exception.ACTableException;
 
@@ -18,18 +18,44 @@ import java.util.Set;
 
 /**
  * 自动建表
+ * @author gaolj
  */
 public class ACTable {
 
-    private DataSource dataSource;  //数据源
-    private Connection connection;  //数据库连接
-    private DatabaseMetaData databaseMetaData;  //数据库元数据信息
-    private DbType dbType;  //数据库类型
+    /**
+     * 数据源
+     */
+    private DataSource dataSource;
 
-    private String basePackage;    //基础包路径
-    private Set<Class<?>> classSet;    //Table注释的类
+    /**
+     * 数据库连接
+     */
+    private Connection connection;
 
-    private String autoType = AutoType.INSERT; //模式默认：插入模式
+    /**
+     * 数据库元数据信息
+     */
+    private DatabaseMetaData databaseMetaData;
+
+    /**
+     * 数据库类型
+     */
+    private DbType dbType;
+
+    /**
+     * 基础包路径
+     */
+    private String basePackage;
+
+    /**
+     * Table注释的类
+     */
+    private Set<Class<?>> classSet;
+
+    /**
+     * 模式默认：插入模式
+     */
+    private String autoType = AutoType.INSERT;
 
     public ACTable(DataSource dataSource, String basePackage) {
         try {
@@ -62,9 +88,9 @@ public class ACTable {
      * 执行
      */
     private void execute() {
-        Executor executor = Executor.getExecutor(this);
+        AbstractExecutor abstractExecutor = AbstractExecutor.getExecutor(this);
         for (Class<?> cls : EmptyObject.set(classSet)) {
-            executor.execute(cls);
+            abstractExecutor.execute(cls);
         }
     }
 
@@ -99,7 +125,7 @@ public class ACTable {
         } else if (driverName.contains("oracle")) {
             this.dbType = DbType.ORACLE;
         } else {
-            throw new ACTableException("暂不支持此数据库！");
+            throw new ACTableException("This database is not currently supported！");
         }
     }
 

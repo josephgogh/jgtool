@@ -5,8 +5,9 @@ import com.jg.tool.actable.constant.OracleFieldType;
 
 /**
  * float类型构建器
+ * @author gaolj
  */
-public class OracleFloatFieldBuilder extends OracleFieldBuilder {
+public class OracleFloatFieldBuilder extends AbstractOracleFieldBuilder {
 
     @Override
     protected String getFieldType() {

@@ -5,8 +5,9 @@ import com.jg.tool.actable.constant.OracleFieldType;
 
 /**
  * integer类型构建器
+ * @author gaolj
  */
-public class OracleIntegerFieldBuilder extends OracleFieldBuilder {
+public class OracleIntegerFieldBuilder extends AbstractOracleFieldBuilder {
 
     @Override
     protected String getFieldType() {

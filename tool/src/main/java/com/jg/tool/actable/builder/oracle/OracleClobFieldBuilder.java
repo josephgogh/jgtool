@@ -5,8 +5,9 @@ import com.jg.tool.actable.constant.OracleFieldType;
 
 /**
  * clob类型构建器
+ * @author gaolj
  */
-public class OracleClobFieldBuilder extends OracleFieldBuilder {
+public class OracleClobFieldBuilder extends AbstractOracleFieldBuilder {
 
     @Override
     protected String getFieldType() {

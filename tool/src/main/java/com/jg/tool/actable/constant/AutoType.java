@@ -2,6 +2,7 @@ package com.jg.tool.actable.constant;
 
 /**
  * 模式类型
+ * @author gaolj
  */
 public interface AutoType {
 

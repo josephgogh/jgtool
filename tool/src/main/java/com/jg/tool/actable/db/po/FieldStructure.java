@@ -2,6 +2,7 @@ package com.jg.tool.actable.db.po;
 
 /**
  * 字段结构
+ * @author gaolj
  */
 public class FieldStructure {
 

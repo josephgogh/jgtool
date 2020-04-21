@@ -4,14 +4,14 @@ import com.jg.tool.actable.annotation.Column;
 import com.jg.tool.actable.constant.OracleFieldType;
 
 /**
- * char类型构建器
+ * nvarchar2类型构建器
  * @author gaolj
  */
-public class OracleCharFieldBuilder extends AbstractOracleFieldBuilder {
+public class OracleNvarchar2FieldBuilder extends AbstractOracleFieldBuilder {
 
     @Override
     protected String getFieldType() {
-        return OracleFieldType.CHAR;
+        return OracleFieldType.NVARCHAR2;
     }
 
     @Override

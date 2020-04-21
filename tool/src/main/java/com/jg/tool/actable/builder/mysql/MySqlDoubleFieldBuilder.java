@@ -1,25 +1,24 @@
-package com.jg.tool.actable.builder.oracle;
+package com.jg.tool.actable.builder.mysql;
 
 import com.jg.tool.actable.annotation.Column;
-import com.jg.tool.actable.constant.OracleFieldType;
+import com.jg.tool.actable.constant.MySqlFieldType;
 
 /**
- * number类型构建器
+ * double类型构建器
  * @author gaolj
  */
-public class OracleNumberFieldBuilder extends AbstractOracleFieldBuilder {
+public class MySqlDoubleFieldBuilder extends MySqlFieldBuilder {
 
     @Override
     protected String getFieldType() {
-        return OracleFieldType.NUMBER;
+        return MySqlFieldType.DOUBLE;
     }
 
     @Override
     protected int getFieldLength(Column column) {
         int length = column.length();
-        int maxLength = 38;
-        if (length > maxLength) {
-            length = maxLength;
+        if (length <= 0 || length > 24) {
+            length = 24;
         }
         return length;
     }
@@ -27,9 +26,8 @@ public class OracleNumberFieldBuilder extends AbstractOracleFieldBuilder {
     @Override
     protected int getFieldDecimalLength(Column column) {
         int decimalLength = column.decimalLength();
-        int maxLength = 127;
-        if (decimalLength > maxLength) {
-            decimalLength = maxLength;
+        if (decimalLength <= 0 || decimalLength > 10) {
+            decimalLength = 10;
         }
         return decimalLength;
     }

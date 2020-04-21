@@ -1,23 +1,23 @@
-package com.jg.tool.actable.builder.oracle;
+package com.jg.tool.actable.builder.mysql;
 
 import com.jg.tool.actable.annotation.Column;
-import com.jg.tool.actable.constant.OracleFieldType;
+import com.jg.tool.actable.constant.MySqlFieldType;
 
 /**
- * char类型构建器
+ * bigint类型构建器
  * @author gaolj
  */
-public class OracleCharFieldBuilder extends AbstractOracleFieldBuilder {
+public class MySqlBigintFieldBuilder extends MySqlFieldBuilder {
 
     @Override
     protected String getFieldType() {
-        return OracleFieldType.CHAR;
+        return MySqlFieldType.BIGINT;
     }
 
     @Override
     protected int getFieldLength(Column column) {
         int length = column.length();
-        int maxLength = 2000;
+        int maxLength = 20;
         if (length <= 0 || length > maxLength) {
             length = maxLength;
         }

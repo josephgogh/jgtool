@@ -4,14 +4,14 @@ import com.jg.tool.actable.annotation.Column;
 import com.jg.tool.actable.constant.OracleFieldType;
 
 /**
- * blob类型构建器
+ * nclob类型构建器
  * @author gaolj
  */
-public class OracleBlobFieldBuilder extends AbstractOracleFieldBuilder {
+public class OracleNclobFieldBuilder extends AbstractOracleFieldBuilder {
 
     @Override
     protected String getFieldType() {
-        return OracleFieldType.BLOB;
+        return OracleFieldType.NCLOB;
     }
 
     @Override

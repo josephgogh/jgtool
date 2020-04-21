@@ -5,8 +5,9 @@ import com.jg.tool.actable.constant.OracleFieldType;
 
 /**
  * binary_double类型构建器
+ * @author gaolj
  */
-public class OracleBinaryDoubleFieldBuilder extends OracleFieldBuilder {
+public class OracleBinaryDoubleFieldBuilder extends AbstractOracleFieldBuilder {
 
     @Override
     protected String getFieldType() {

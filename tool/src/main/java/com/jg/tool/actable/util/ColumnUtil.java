@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
 
 /**
  * Column工具类
+ * @author gaolj
  */
 public class ColumnUtil {
 

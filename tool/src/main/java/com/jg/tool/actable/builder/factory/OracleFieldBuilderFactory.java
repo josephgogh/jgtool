@@ -7,22 +7,23 @@ import java.util.Date;
 
 /**
  * oracle字段构建器工厂
+ * @author gaolj
  */
-public class OracleFieldBuilderFactory extends FieldBuilderFactory {
+public class OracleFieldBuilderFactory extends AbstractFieldBuilderFactory {
 
     public OracleFieldBuilderFactory() {
         super();
         add(OracleFieldType.CHAR, new OracleCharFieldBuilder());
         add(OracleFieldType.VARCHAR2, new OracleVarchar2FieldBuilder());
-        add(OracleFieldType.NCHAR, new OracleNCharFieldBuilder());
-        add(OracleFieldType.NVARCHAR2, new OracleNVarchar2FieldBuilder());
+        add(OracleFieldType.NCHAR, new OracleNcharFieldBuilder());
+        add(OracleFieldType.NVARCHAR2, new OracleNvarchar2FieldBuilder());
         add(OracleFieldType.DATE, new OracleDateFieldBuilder());
         add(OracleFieldType.LONG, new OracleLongFieldBuilder());
         add(OracleFieldType.RAW, new OracleRawFieldBuilder());
         add(OracleFieldType.LONG_RAW, new OracleLongRawFieldBuilder());
         add(OracleFieldType.BLOB, new OracleBlobFieldBuilder());
         add(OracleFieldType.CLOB, new OracleClobFieldBuilder());
-        add(OracleFieldType.NCLOB, new OracleNClobFieldBuilder());
+        add(OracleFieldType.NCLOB, new OracleNclobFieldBuilder());
         add(OracleFieldType.NUMBER, new OracleNumberFieldBuilder());
         add(OracleFieldType.INTEGER, new OracleIntegerFieldBuilder());
         add(OracleFieldType.FLOAT, new OracleFloatFieldBuilder());

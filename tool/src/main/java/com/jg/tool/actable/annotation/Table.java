@@ -8,6 +8,7 @@ import java.lang.annotation.Target;
 /**
  * 表示该类为需要自动创建的表
  * value值表示表名，如果为""，则默认使用类名创建
+ * @author gaolj
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

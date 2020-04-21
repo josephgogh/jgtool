@@ -5,8 +5,9 @@ import com.jg.tool.actable.constant.OracleFieldType;
 
 /**
  * varchar2类型构建器
+ * @author gaolj
  */
-public class OracleVarchar2FieldBuilder extends OracleFieldBuilder {
+public class OracleVarchar2FieldBuilder extends AbstractOracleFieldBuilder {
 
     @Override
     protected String getFieldType() {
@@ -16,8 +17,9 @@ public class OracleVarchar2FieldBuilder extends OracleFieldBuilder {
     @Override
     protected int getFieldLength(Column column) {
         int length = column.length();
-        if (length <= 0 || length > 4000) {
-            length = 4000;
+        int maxLength = 4000;
+        if (length <= 0 || length > maxLength) {
+            length = maxLength;
         }
         return length;
     }

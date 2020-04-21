@@ -5,8 +5,9 @@ import com.jg.tool.actable.constant.OracleFieldType;
 
 /**
  * long raw类型构建器
+ * @author gaolj
  */
-public class OracleLongRawFieldBuilder extends OracleFieldBuilder {
+public class OracleLongRawFieldBuilder extends AbstractOracleFieldBuilder {
 
     @Override
     protected String getFieldType() {
