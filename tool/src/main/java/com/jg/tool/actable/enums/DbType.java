@@ -13,6 +13,10 @@ public enum DbType {
     /**
      * oracle数据库
      */
-    ORACLE
+    ORACLE,
+    /**
+     * sqlserver数据库
+     */
+    SQLSERVER
 
 }

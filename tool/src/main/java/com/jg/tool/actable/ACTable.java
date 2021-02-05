@@ -124,6 +124,8 @@ public class ACTable {
             this.dbType = DbType.MYSQL;
         } else if (driverName.contains("oracle")) {
             this.dbType = DbType.ORACLE;
+        } else if (driverName.contains("sql server")) {
+            this.dbType = DbType.SQLSERVER;
         } else {
             throw new ACTableException("This database is not currently supported！");
         }

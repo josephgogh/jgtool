@@ -7,7 +7,7 @@ import com.jg.tool.actable.constant.MySqlFieldType;
  * mediumint类型构建器
  * @author gaolj
  */
-public class MySqlMediumintFieldBuilder extends MySqlFieldBuilder {
+public class MySqlMediumintFieldBuilder extends AbstractMySqlFieldBuilder {
 
     @Override
     protected String getFieldType() {

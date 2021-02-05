@@ -7,7 +7,7 @@ import com.jg.tool.actable.constant.MySqlFieldType;
  *  longtext类型构建器
  *  @author gaolj
  */
-public class MySqlLongtextFieldBuilder extends MySqlFieldBuilder {
+public class MySqlLongtextFieldBuilder extends AbstractMySqlFieldBuilder {
 
     @Override
     protected String getFieldType() {

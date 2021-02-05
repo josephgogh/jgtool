@@ -7,7 +7,7 @@ import com.jg.tool.actable.constant.MySqlFieldType;
  * double类型构建器
  * @author gaolj
  */
-public class MySqlDoubleFieldBuilder extends MySqlFieldBuilder {
+public class MySqlDoubleFieldBuilder extends AbstractMySqlFieldBuilder {
 
     @Override
     protected String getFieldType() {

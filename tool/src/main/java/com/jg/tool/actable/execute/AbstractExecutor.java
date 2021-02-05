@@ -69,6 +69,7 @@ public abstract class AbstractExecutor {
         switch (acTable.getDbType()) {
             case MYSQL: return new MySqlExecutor(acTable);
             case ORACLE: return new OracleExecutor(acTable);
+            case SQLSERVER: return new SqlServerExecutor(acTable);
             default:throw new ACTableException("This database is not currently supported！");
         }
     }

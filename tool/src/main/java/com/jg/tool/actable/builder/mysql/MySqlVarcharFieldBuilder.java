@@ -7,7 +7,7 @@ import com.jg.tool.actable.constant.MySqlFieldType;
  * varchar类型构建器
  * @author gaolj
  */
-public class MySqlVarcharFieldBuilder extends MySqlFieldBuilder {
+public class MySqlVarcharFieldBuilder extends AbstractMySqlFieldBuilder {
 
     @Override
     protected String getFieldType() {

@@ -7,7 +7,7 @@ import com.jg.tool.actable.constant.MySqlFieldType;
  *  tinyblob类型构建器
  *  @author gaolj
  */
-public class MySqlTinyblobFieldBuilder extends MySqlFieldBuilder {
+public class MySqlTinyblobFieldBuilder extends AbstractMySqlFieldBuilder {
 
     @Override
     protected String getFieldType() {

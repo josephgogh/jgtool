@@ -7,7 +7,7 @@ import com.jg.tool.actable.constant.MySqlFieldType;
  * year类型构建器
  * @author gaolj
  */
-public class MySqlYearFieldBuilder extends MySqlFieldBuilder {
+public class MySqlYearFieldBuilder extends AbstractMySqlFieldBuilder {
 
     @Override
     protected String getFieldType() {

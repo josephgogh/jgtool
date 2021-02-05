@@ -11,7 +11,7 @@ import java.lang.reflect.Field;
  * mysql字段构建器
  * @author gaolj
  */
-public abstract class MySqlFieldBuilder extends AbstractFieldBuilder {
+public abstract class AbstractMySqlFieldBuilder extends AbstractFieldBuilder {
 
     @Override
     public String buildModify(Field field, Column column, FieldStructure fieldStructure) {

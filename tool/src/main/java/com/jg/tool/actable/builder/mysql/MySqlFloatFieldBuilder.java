@@ -7,7 +7,7 @@ import com.jg.tool.actable.constant.MySqlFieldType;
  * float类型构建器
  * @author gaolj
  */
-public class MySqlFloatFieldBuilder extends MySqlFieldBuilder {
+public class MySqlFloatFieldBuilder extends AbstractMySqlFieldBuilder {
 
     @Override
     protected String getFieldType() {

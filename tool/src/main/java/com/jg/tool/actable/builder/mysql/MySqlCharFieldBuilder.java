@@ -7,7 +7,7 @@ import com.jg.tool.actable.constant.MySqlFieldType;
  * char类型构建器
  * @author gaolj
  */
-public class MySqlCharFieldBuilder extends MySqlFieldBuilder {
+public class MySqlCharFieldBuilder extends AbstractMySqlFieldBuilder {
 
     @Override
     protected String getFieldType() {

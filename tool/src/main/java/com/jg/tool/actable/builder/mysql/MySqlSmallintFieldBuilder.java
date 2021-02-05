@@ -7,7 +7,7 @@ import com.jg.tool.actable.constant.MySqlFieldType;
  * smallint类型构建器
  * @author gaolj
  */
-public class MySqlSmallintFieldBuilder extends MySqlFieldBuilder {
+public class MySqlSmallintFieldBuilder extends AbstractMySqlFieldBuilder {
 
     @Override
     protected String getFieldType() {

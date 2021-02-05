@@ -7,7 +7,7 @@ import com.jg.tool.actable.constant.MySqlFieldType;
  * numeric类型构建器
  * @author gaolj
  */
-public class MySqlNumericFieldBuilder extends MySqlFieldBuilder {
+public class MySqlNumericFieldBuilder extends AbstractMySqlFieldBuilder {
 
     @Override
     protected String getFieldType() {

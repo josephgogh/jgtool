@@ -7,7 +7,7 @@ import com.jg.tool.actable.constant.MySqlFieldType;
  * date类型构建器
  * @author gaolj
  */
-public class MySqlDateFieldBuilder extends MySqlFieldBuilder {
+public class MySqlDateFieldBuilder extends AbstractMySqlFieldBuilder {
 
     @Override
     protected String getFieldType() {
