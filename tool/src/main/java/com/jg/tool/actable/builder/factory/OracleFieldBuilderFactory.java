@@ -39,10 +39,10 @@ public class OracleFieldBuilderFactory extends AbstractFieldBuilderFactory {
         add(Integer.class.getName(), new OracleIntegerFieldBuilder());
         add(long.class.getName(), new OracleNumberFieldBuilder());
         add(Long.class.getName(), new OracleNumberFieldBuilder());
-        add(float.class.getName(), new OracleBinaryFloatFieldBuilder());
-        add(Float.class.getName(), new OracleBinaryFloatFieldBuilder());
-        add(double.class.getName(), new OracleBinaryDoubleFieldBuilder());
-        add(Double.class.getName(), new OracleBinaryDoubleFieldBuilder());
+        add(float.class.getName(), new OracleNumberFieldBuilder());
+        add(Float.class.getName(), new OracleNumberFieldBuilder());
+        add(double.class.getName(), new OracleNumberFieldBuilder());
+        add(Double.class.getName(), new OracleNumberFieldBuilder());
         add(char.class.getName(), new OracleCharFieldBuilder());
         add(String.class.getName(), new OracleVarchar2FieldBuilder());
         add(Date.class.getName(), new OracleDateFieldBuilder());
