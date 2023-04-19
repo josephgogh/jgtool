@@ -143,7 +143,6 @@ public abstract class AbstractExecutor {
         for (Field field : EmptyObject.list(this.fieldList)) {
             //遍历字段
             Column column = field.getAnnotation(Column.class);
-            String fieldName = ColumnUtil.getTableFieldName(field, column);
             AbstractFieldBuilder abstractFieldBuilder = this.abstractFieldBuilderFactory.getFieldBuilder(field, column);
             if (abstractFieldBuilder == null) {
                 throw new ACTableException("Construction of this data type is currently not supported！ClassName：" + this.cls.getName() + ",FieldName：" + field.getName());

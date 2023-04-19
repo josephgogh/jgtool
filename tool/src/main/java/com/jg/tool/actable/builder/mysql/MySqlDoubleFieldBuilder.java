@@ -1,7 +1,6 @@
 package com.jg.tool.actable.builder.mysql;
 
 import com.jg.tool.actable.annotation.Column;
-import com.jg.tool.actable.constant.MySqlFieldType;
 
 /**
  * double类型构建器
@@ -11,7 +10,7 @@ public class MySqlDoubleFieldBuilder extends AbstractMySqlFieldBuilder {
 
     @Override
     protected String getFieldType() {
-        return MySqlFieldType.DOUBLE;
+        return "double";
     }
 
     @Override

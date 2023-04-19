@@ -1,25 +1,23 @@
 package com.jg.tool.actable.builder.oracle;
 
 import com.jg.tool.actable.annotation.Column;
-import com.jg.tool.actable.constant.OracleFieldType;
 
 /**
- * nchar类型构建器
+ * varchar2类型构建器
  * @author gaolj
  */
-public class OracleNcharFieldBuilder extends AbstractOracleFieldBuilder {
+public class OracleStringFieldBuilder extends AbstractOracleFieldBuilder {
 
     @Override
     protected String getFieldType() {
-        return OracleFieldType.NCHAR;
+        return "varchar2";
     }
 
     @Override
     protected int getFieldLength(Column column) {
         int length = column.length();
-        int maxLength = 1000;
-        if (length <= 0 || length > maxLength) {
-            length = maxLength;
+        if (length <= 0 || length > 4000) {
+            length = 400;
         }
         return length;
     }

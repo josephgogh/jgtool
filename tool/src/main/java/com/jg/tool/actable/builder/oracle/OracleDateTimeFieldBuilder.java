@@ -1,17 +1,16 @@
 package com.jg.tool.actable.builder.oracle;
 
 import com.jg.tool.actable.annotation.Column;
-import com.jg.tool.actable.constant.OracleFieldType;
 
 /**
- * blob类型构建器
+ * date类型构建器
  * @author gaolj
  */
-public class OracleBlobFieldBuilder extends AbstractOracleFieldBuilder {
+public class OracleDateTimeFieldBuilder extends AbstractOracleFieldBuilder {
 
     @Override
     protected String getFieldType() {
-        return OracleFieldType.BLOB;
+        return "date";
     }
 
     @Override

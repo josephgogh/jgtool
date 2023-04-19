@@ -1,25 +1,23 @@
 package com.jg.tool.actable.builder.sqlserver;
 
 import com.jg.tool.actable.annotation.Column;
-import com.jg.tool.actable.constant.SqlServerFieldType;
 
 /**
- * varbinary类型构建器
+ * varchar类型构建器
  * @author gaolj
  */
-public class SqlServerVarbinaryFieldBuilder extends AbstractSqlServerFieldBuilder {
+public class SqlServerStringFieldBuilder extends AbstractSqlServerFieldBuilder {
 
     @Override
     protected String getFieldType() {
-        return SqlServerFieldType.VARBINARY;
+        return "varchar";
     }
 
     @Override
     protected int getFieldLength(Column column) {
         int length = column.length();
-        int defaultLength = 50;
-        if (length <= 0) {
-            length = defaultLength;
+        if (length <= 0 || length > 4000) {
+            length = 400;
         }
         return length;
     }

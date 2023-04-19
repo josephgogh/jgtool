@@ -1,7 +1,6 @@
 package com.jg.tool.actable.builder.oracle;
 
 import com.jg.tool.actable.annotation.Column;
-import com.jg.tool.actable.constant.OracleFieldType;
 
 /**
  * long类型构建器
@@ -11,7 +10,7 @@ public class OracleLongFieldBuilder extends AbstractOracleFieldBuilder {
 
     @Override
     protected String getFieldType() {
-        return OracleFieldType.LONG;
+        return "integer";
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.jg.tool.actable.builder.factory;
 
 import com.jg.tool.actable.builder.mysql.*;
-import com.jg.tool.actable.constant.MySqlFieldType;
+import com.jg.tool.actable.constant.FieldType;
 
 import java.util.Date;
 
@@ -13,44 +13,26 @@ public class MySqlFieldBuilderFactory extends AbstractFieldBuilderFactory {
 
     public MySqlFieldBuilderFactory() {
         super();
-        add(MySqlFieldType.TINYINT, new MySqlTinyintFieldBuilder());
-        add(MySqlFieldType.SMALLINT, new MySqlSmallintFieldBuilder());
-        add(MySqlFieldType.MEDIUMINT, new MySqlMediumintFieldBuilder());
-        add(MySqlFieldType.INT, new MySqlIntFieldBuilder());
-        add(MySqlFieldType.BIGINT, new MySqlBigintFieldBuilder());
-        add(MySqlFieldType.FLOAT, new MySqlFloatFieldBuilder());
-        add(MySqlFieldType.DOUBLE, new MySqlDoubleFieldBuilder());
-        add(MySqlFieldType.NUMERIC, new MySqlNumericFieldBuilder());
-        add(MySqlFieldType.DATE, new MySqlDateFieldBuilder());
-        add(MySqlFieldType.DATETIME, new MySqlDatetimeFieldBuilder());
-        add(MySqlFieldType.TIMESTAMP, new MySqlTimestampFieldBuilder());
-        add(MySqlFieldType.TIME, new MySqlTimeFieldBuilder());
-        add(MySqlFieldType.YEAR, new MySqlYearFieldBuilder());
-        add(MySqlFieldType.CHAR, new MySqlCharFieldBuilder());
-        add(MySqlFieldType.VARCHAR, new MySqlVarcharFieldBuilder());
-        add(MySqlFieldType.TINYBLOB, new MySqlTinyblobFieldBuilder());
-        add(MySqlFieldType.TINYTEXT, new MySqlTinytextFieldBuilder());
-        add(MySqlFieldType.BLOB, new MySqlBlobFieldBuilder());
-        add(MySqlFieldType.TEXT, new MySqlTextFieldBuilder());
-        add(MySqlFieldType.MEDIUMBLOB, new MySqlMediumblobFieldBuilder());
-        add(MySqlFieldType.MEDIUMTEXT, new MySqlMediumtextFieldBuilder());
-        add(MySqlFieldType.LONGBLOB, new MySqlLongblobFieldBuilder());
-        add(MySqlFieldType.LONGTEXT, new MySqlLongtextFieldBuilder());
+        add(FieldType.LONG, new MySqlLongFieldBuilder());
+        add(FieldType.DOUBLE, new MySqlDoubleFieldBuilder());
+        add(FieldType.STRING, new MySqlStringFieldBuilder());
+        add(FieldType.TEXT, new MySqlTextFieldBuilder());
+        add(FieldType.DATETIME, new MySqlDatetimeFieldBuilder());
 
-        add(byte.class.getName(), new MySqlTinyintFieldBuilder());
-        add(Byte.class.getName(), new MySqlTinyintFieldBuilder());
-        add(short.class.getName(), new MySqlSmallintFieldBuilder());
-        add(Short.class.getName(), new MySqlSmallintFieldBuilder());
-        add(int.class.getName(), new MySqlIntFieldBuilder());
-        add(Integer.class.getName(), new MySqlIntFieldBuilder());
-        add(long.class.getName(), new MySqlBigintFieldBuilder());
-        add(Long.class.getName(), new MySqlBigintFieldBuilder());
-        add(float.class.getName(), new MySqlFloatFieldBuilder());
-        add(Float.class.getName(), new MySqlFloatFieldBuilder());
+        add(byte.class.getName(), new MySqlLongFieldBuilder());
+        add(Byte.class.getName(), new MySqlLongFieldBuilder());
+        add(short.class.getName(), new MySqlLongFieldBuilder());
+        add(Short.class.getName(), new MySqlLongFieldBuilder());
+        add(int.class.getName(), new MySqlLongFieldBuilder());
+        add(Integer.class.getName(), new MySqlLongFieldBuilder());
+        add(long.class.getName(), new MySqlLongFieldBuilder());
+        add(Long.class.getName(), new MySqlLongFieldBuilder());
+        add(float.class.getName(), new MySqlDoubleFieldBuilder());
+        add(Float.class.getName(), new MySqlDoubleFieldBuilder());
         add(double.class.getName(), new MySqlDoubleFieldBuilder());
         add(Double.class.getName(), new MySqlDoubleFieldBuilder());
-        add(char.class.getName(), new MySqlCharFieldBuilder());
-        add(String.class.getName(), new MySqlVarcharFieldBuilder());
+        add(char.class.getName(), new MySqlStringFieldBuilder());
+        add(String.class.getName(), new MySqlStringFieldBuilder());
         add(Date.class.getName(), new MySqlDatetimeFieldBuilder());
     }
 

@@ -1,7 +1,7 @@
 package com.jg.tool.actable.builder.factory;
 
 import com.jg.tool.actable.builder.oracle.*;
-import com.jg.tool.actable.constant.OracleFieldType;
+import com.jg.tool.actable.constant.FieldType;
 
 import java.util.Date;
 
@@ -13,39 +13,27 @@ public class OracleFieldBuilderFactory extends AbstractFieldBuilderFactory {
 
     public OracleFieldBuilderFactory() {
         super();
-        add(OracleFieldType.CHAR, new OracleCharFieldBuilder());
-        add(OracleFieldType.VARCHAR2, new OracleVarchar2FieldBuilder());
-        add(OracleFieldType.NCHAR, new OracleNcharFieldBuilder());
-        add(OracleFieldType.NVARCHAR2, new OracleNvarchar2FieldBuilder());
-        add(OracleFieldType.DATE, new OracleDateFieldBuilder());
-        add(OracleFieldType.LONG, new OracleLongFieldBuilder());
-        add(OracleFieldType.RAW, new OracleRawFieldBuilder());
-        add(OracleFieldType.LONG_RAW, new OracleLongRawFieldBuilder());
-        add(OracleFieldType.BLOB, new OracleBlobFieldBuilder());
-        add(OracleFieldType.CLOB, new OracleClobFieldBuilder());
-        add(OracleFieldType.NCLOB, new OracleNclobFieldBuilder());
-        add(OracleFieldType.NUMBER, new OracleNumberFieldBuilder());
-        add(OracleFieldType.INTEGER, new OracleIntegerFieldBuilder());
-        add(OracleFieldType.FLOAT, new OracleFloatFieldBuilder());
-        add(OracleFieldType.REAL, new OracleRealFieldBuilder());
-        add(OracleFieldType.BINARY_FLOAT, new OracleBinaryFloatFieldBuilder());
-        add(OracleFieldType.BINARY_DOUBLE, new OracleBinaryDoubleFieldBuilder());
+        add(FieldType.LONG, new OracleLongFieldBuilder());
+        add(FieldType.DOUBLE, new OracleDoubleFieldBuilder());
+        add(FieldType.STRING, new OracleStringFieldBuilder());
+        add(FieldType.TEXT, new OracleTextFieldBuilder());
+        add(FieldType.DATETIME, new OracleDateTimeFieldBuilder());
 
-        add(byte.class.getName(), new OracleIntegerFieldBuilder());
-        add(Byte.class.getName(), new OracleIntegerFieldBuilder());
-        add(short.class.getName(), new OracleIntegerFieldBuilder());
-        add(Short.class.getName(), new OracleIntegerFieldBuilder());
-        add(int.class.getName(), new OracleIntegerFieldBuilder());
-        add(Integer.class.getName(), new OracleIntegerFieldBuilder());
-        add(long.class.getName(), new OracleNumberFieldBuilder());
-        add(Long.class.getName(), new OracleNumberFieldBuilder());
-        add(float.class.getName(), new OracleNumberFieldBuilder());
-        add(Float.class.getName(), new OracleNumberFieldBuilder());
-        add(double.class.getName(), new OracleNumberFieldBuilder());
-        add(Double.class.getName(), new OracleNumberFieldBuilder());
-        add(char.class.getName(), new OracleCharFieldBuilder());
-        add(String.class.getName(), new OracleVarchar2FieldBuilder());
-        add(Date.class.getName(), new OracleDateFieldBuilder());
+        add(byte.class.getName(), new OracleLongFieldBuilder());
+        add(Byte.class.getName(), new OracleLongFieldBuilder());
+        add(short.class.getName(), new OracleLongFieldBuilder());
+        add(Short.class.getName(), new OracleLongFieldBuilder());
+        add(int.class.getName(), new OracleLongFieldBuilder());
+        add(Integer.class.getName(), new OracleLongFieldBuilder());
+        add(long.class.getName(), new OracleDoubleFieldBuilder());
+        add(Long.class.getName(), new OracleDoubleFieldBuilder());
+        add(float.class.getName(), new OracleDoubleFieldBuilder());
+        add(Float.class.getName(), new OracleDoubleFieldBuilder());
+        add(double.class.getName(), new OracleDoubleFieldBuilder());
+        add(Double.class.getName(), new OracleDoubleFieldBuilder());
+        add(char.class.getName(), new OracleStringFieldBuilder());
+        add(String.class.getName(), new OracleStringFieldBuilder());
+        add(Date.class.getName(), new OracleDateTimeFieldBuilder());
     }
 
 }

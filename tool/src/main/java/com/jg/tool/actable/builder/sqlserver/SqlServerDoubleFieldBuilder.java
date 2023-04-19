@@ -1,23 +1,22 @@
-package com.jg.tool.actable.builder.mysql;
+package com.jg.tool.actable.builder.sqlserver;
 
 import com.jg.tool.actable.annotation.Column;
-import com.jg.tool.actable.constant.MySqlFieldType;
 
 /**
- * float类型构建器
+ * numeric类型构建器
  * @author gaolj
  */
-public class MySqlFloatFieldBuilder extends AbstractMySqlFieldBuilder {
+public class SqlServerDoubleFieldBuilder extends AbstractSqlServerFieldBuilder {
 
     @Override
     protected String getFieldType() {
-        return MySqlFieldType.FLOAT;
+        return "numeric";
     }
 
     @Override
     protected int getFieldLength(Column column) {
         int length = column.length();
-        int maxLength = 16;
+        int maxLength = 38;
         if (length <= 0 || length > maxLength) {
             length = maxLength;
         }
@@ -27,8 +26,8 @@ public class MySqlFloatFieldBuilder extends AbstractMySqlFieldBuilder {
     @Override
     protected int getFieldDecimalLength(Column column) {
         int decimalLength = column.decimalLength();
-        if (decimalLength <= 0 || decimalLength > 10) {
-            decimalLength = 10;
+        if (decimalLength <= 0 || decimalLength > 18) {
+            decimalLength = 18;
         }
         return decimalLength;
     }

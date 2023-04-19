@@ -1,7 +1,7 @@
 package com.jg.tool.actable.builder.factory;
 
 import com.jg.tool.actable.builder.sqlserver.*;
-import com.jg.tool.actable.constant.SqlServerFieldType;
+import com.jg.tool.actable.constant.FieldType;
 
 import java.util.Date;
 
@@ -14,46 +14,26 @@ public class SqlServerFieldBuilderFactory extends AbstractFieldBuilderFactory {
 
     public SqlServerFieldBuilderFactory() {
         super();
-        add(SqlServerFieldType.BIT, new SqlServerBitFieldBuilder());
-        add(SqlServerFieldType.TINYINT, new SqlServerTinyintFieldBuilder());
-        add(SqlServerFieldType.SMALLINT, new SqlServerSmallintFieldBuilder());
-        add(SqlServerFieldType.INT, new SqlServerIntFieldBuilder());
-        add(SqlServerFieldType.BIGINT, new SqlServerBigintFieldBuilder());
-        add(SqlServerFieldType.DECIMAL, new SqlServerDecimalFieldBuilder());
-        add(SqlServerFieldType.NUMERIC, new SqlServerNumericFieldBuilder());
-        add(SqlServerFieldType.SMALLMONEY, new SqlServerSmallmoneyFieldBuilder());
-        add(SqlServerFieldType.MONEY, new SqlServerMoneyFieldBuilder());
-        add(SqlServerFieldType.FLOAT, new SqlServerFloatFieldBuilder());
-        add(SqlServerFieldType.REAL, new SqlServerRealFieldBuilder());
-        add(SqlServerFieldType.SMALLDATETIME, new SqlServerSmalldatetimeFieldBuilder());
-        add(SqlServerFieldType.DATE, new SqlServerDateFieldBuilder());
-        add(SqlServerFieldType.DATETIME, new SqlServerDatetimeFieldBuilder());
-        add(SqlServerFieldType.TIMESTAMP, new SqlServerTimestampFieldBuilder());
-        add(SqlServerFieldType.UNIQUEIDENTIFIER, new SqlServerUniqueidentifierFieldBuilder());
-        add(SqlServerFieldType.CHAR, new SqlServerCharFieldBuilder());
-        add(SqlServerFieldType.VARCHAR, new SqlServerVarcharFieldBuilder());
-        add(SqlServerFieldType.TEXT, new SqlServerTextFieldBuilder());
-        add(SqlServerFieldType.NCHAR, new SqlServerNcharFieldBuilder());
-        add(SqlServerFieldType.NVARCHAR, new SqlServerNvarcharFieldBuilder());
-        add(SqlServerFieldType.NTEXT, new SqlServerNtextFieldBuilder());
-        add(SqlServerFieldType.BINARY, new SqlServerBinaryFieldBuilder());
-        add(SqlServerFieldType.VARBINARY, new SqlServerVarbinaryFieldBuilder());
-        add(SqlServerFieldType.IMAGE, new SqlServerImageFieldBuilder());
+        add(FieldType.LONG, new SqlServerLongFieldBuilder());
+        add(FieldType.DOUBLE, new SqlServerDoubleFieldBuilder());
+        add(FieldType.STRING, new SqlServerStringFieldBuilder());
+        add(FieldType.TEXT, new SqlServerTextFieldBuilder());
+        add(FieldType.DATETIME, new SqlServerDatetimeFieldBuilder());
 
-        add(byte.class.getName(), new SqlServerIntFieldBuilder());
-        add(Byte.class.getName(), new SqlServerIntFieldBuilder());
-        add(short.class.getName(), new SqlServerIntFieldBuilder());
-        add(Short.class.getName(), new SqlServerIntFieldBuilder());
-        add(int.class.getName(), new SqlServerIntFieldBuilder());
-        add(Integer.class.getName(), new SqlServerIntFieldBuilder());
-        add(long.class.getName(), new SqlServerBigintFieldBuilder());
-        add(Long.class.getName(), new SqlServerBigintFieldBuilder());
-        add(float.class.getName(), new SqlServerFloatFieldBuilder());
-        add(Float.class.getName(), new SqlServerFloatFieldBuilder());
-        add(double.class.getName(), new SqlServerDecimalFieldBuilder());
-        add(Double.class.getName(), new SqlServerDecimalFieldBuilder());
-        add(char.class.getName(), new SqlServerCharFieldBuilder());
-        add(String.class.getName(), new SqlServerVarcharFieldBuilder());
+        add(byte.class.getName(), new SqlServerLongFieldBuilder());
+        add(Byte.class.getName(), new SqlServerLongFieldBuilder());
+        add(short.class.getName(), new SqlServerLongFieldBuilder());
+        add(Short.class.getName(), new SqlServerLongFieldBuilder());
+        add(int.class.getName(), new SqlServerLongFieldBuilder());
+        add(Integer.class.getName(), new SqlServerLongFieldBuilder());
+        add(long.class.getName(), new SqlServerLongFieldBuilder());
+        add(Long.class.getName(), new SqlServerLongFieldBuilder());
+        add(float.class.getName(), new SqlServerDoubleFieldBuilder());
+        add(Float.class.getName(), new SqlServerDoubleFieldBuilder());
+        add(double.class.getName(), new SqlServerDoubleFieldBuilder());
+        add(Double.class.getName(), new SqlServerDoubleFieldBuilder());
+        add(char.class.getName(), new SqlServerStringFieldBuilder());
+        add(String.class.getName(), new SqlServerStringFieldBuilder());
         add(Date.class.getName(), new SqlServerDatetimeFieldBuilder());
     }
 }
